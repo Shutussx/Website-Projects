@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gorilla Tag Colour Code Viewer</title>
+    <style>
+        @font-face {
+            font-family: 'GorillaTagFont';
+            src: url('VCR_OSD_MONO.ttf') format('truetype');
+        }
+        body, h1, input {
+            font-family: 'GorillaTagFont', monospace;
+            color: #fff;
+        }
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #0B6623; /* Gorilla Tag green */
+        }
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            text-shadow: 2px 2px #000; /* Shadow to make it pop */
+        }
+        input {
+            font-size: 1.5rem;
+            padding: 15px;
+            border: 3px solid #000;
+            border-radius: 8px;
+            outline: none;
+            text-align: center;
+            background-color: #444;
+            color: #0B6623; /* Match the green background */
+            width: 300px;
+        }
+        #colorBox {
+            width: 200px;
+            height: 200px;
+            margin-top: 30px;
+            border: 3px solid #000;
+            background-color: #222;
+        }
+    </style>
+</head>
+<body>
+    <h1>Gorilla Tag Color Code Viewer</h1>
+    <input type="tel" id="colorCode" placeholder="Enter Gorilla Tag Color Code" maxlength="3" oninput="updateColor()" onkeypress="return isNumberKey(event)">
+    <div id="colorBox"></div>
+
+    <script>
+        function updateColor() {
+            const colorCode = document.getElementById('colorCode').value;
+            const colorBox = document.getElementById('colorBox');
+
+            if (/^\d{3}$/.test(colorCode)) {
+                const rgbValues = colorCode.split('').map(num => Math.round(parseInt(num) * 28.333));
+                colorBox.style.backgroundColor = `rgb(${rgbValues.join(',')})`;
+            } else {
+                colorBox.style.backgroundColor = '#222'; // Reset to default if input is invalid
+            }
+        }
+
+        function isNumberKey(evt) {
+            const charCode = evt.which ? evt.which : evt.keyCode;
+            if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+                return false; // Prevent non-numeric input
+            }
+            return true;
+        }
+    </script>
+</body>
+</html>
