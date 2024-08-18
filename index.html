@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alien's Random Websites</title>
+    <style>
+        /* Embedded CSS */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Roboto', sans-serif;
+            background-color: #121212;
+            color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .container {
+            text-align: center;
+            max-width: 800px;
+            padding: 30px;
+            border-radius: 15px;
+            background-color: #1e1e1e;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.9); /* Darker shadow */
+            border: 1px solid #333;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 30px;
+            color: #e0e0e0;
+            text-shadow: 0 4px 8px rgba(0, 0, 0, 0.8); /* More prominent text shadow */
+        }
+
+        .project-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .project-card {
+            background-color: #282828;
+            padding: 20px;
+            border-radius: 12px;
+            text-decoration: none;
+            color: #ffffff;
+            font-size: 1.2rem;
+            font-weight: 500;
+            text-align: center;
+            transition: transform 0.3s, background-color 0.3s;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.7); /* Subtle shadow for cards */
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            background-color: #383838; /* Slightly lighter on hover */
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.9); /* More intense shadow on hover */
+        }
+
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <h1>Alien's Random Websites</h1>
+        <div class="project-list">
+            <a href="colourcode/index.html" class="project-card">Gorilla Tag Colour Code Viewer</a>
+
+        </div>
+    </div>
+</body>
+</html>
