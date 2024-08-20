@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Global Clicker</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        h1 {
+            font-size: 3em;
+            margin-bottom: 20px;
+        }
+        #click-count {
+            font-size: 2em;
+            margin-bottom: 20px;
+            color: #333;
+        }
+        #clicker {
+            width: 100%;
+            height: 100vh;
+            cursor: pointer;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: -1;
+        }
+        .instruction {
+            font-size: 1.2em;
+            color: #555;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Global Clicker</h1>
+    <p id="click-count">Total Clicks: 0</p>
+    <div id="clicker"></div>
+    <p class="instruction">Click anywhere on the screen to increase the global click count!</p>
+
+    <script>
+        // Fetch the current click count on load
+        function fetchClickCount() {
+            fetch('/get-click-count')
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('click-count').innerText = `Total Clicks: ${data.clickCount}`;
+                });
+        }
+
+        // Increment the click count when the user clicks
+        function incrementClickCount() {
+            fetch('/increment-click-count', { method: 'POST' })
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('click-count').innerText = `Total Clicks: ${data.clickCount}`;
+                });
+        }
+
+        // Attach the click event listener
+        document.getElementById('clicker').addEventListener('click', incrementClickCount);
+
+        // Initialize the click count display
+        fetchClickCount();
+    </script>
+</body>
+</html>
