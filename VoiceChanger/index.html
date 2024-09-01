@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voice Changer</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Voice Changer</h1>
+        <div class="controls">
+            <button id="record" class="btn">🎤 Record</button>
+            <button id="play" class="btn" disabled>▶️ Play</button>
+            <button id="download" class="btn" disabled>⬇️ Download MP3 (broken)</button>
+        </div>
+        <div class="effect-container">
+            <label for="effect">Choose an effect:</label>
+            <select id="effect" class="effect-select">
+                <option value="none">None</option>
+                <option value="echo">Echo</option>
+                <option value="robot">Robot</option>
+                <option value="chipmunk">Chipmunk</option>
+                <option value="alien">Alien</option>
+                <option value="telephone">Telephone</option>
+                <option value="underwater">Underwater</option>
+                <option value="reverb">Reverb</option>
+                <option value="bassBoost">Bass Boost</option>
+                <option value="lowPitch">Low Pitch</option>
+                <option value="highPitch">High Pitch</option>
+            </select>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
