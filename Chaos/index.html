@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ultimate Browser Nightmare</title>
+    <style>
+        /* 1. Corrected Invert Colors Effect */
+        body {
+            transition: all 0.5s; /* Smooth transitions */
+        }
+
+        .invert {
+            filter: invert(1);
+        }
+
+        /* 2. Hijack Cursor */
+        body:hover {
+            cursor: url('https://www.w3schools.com/css/rockhand.png'), auto; /* Ridiculous cursor */
+        }
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // 3. Full-Screen Mode on Attempted Exit
+            function triggerFullScreen() {
+                if (!document.fullscreenElement) {
+                    document.documentElement.requestFullscreen().catch(err => console.log(err));
+                }
+            }
+
+            // 4. Warn on Page Exit about "Data Loss"
+            window.onbeforeunload = function () {
+                return "Are you sure you want to leave? Changes you made may not be saved.";
+            };
+
+            // 5. Fake 2FA Prompt
+            function showFake2FA() {
+                const code = prompt("Enter the 2FA passcode sent to your device:");
+                if (code !== "123456") {
+                    alert("Invalid code! Try again.");
+                    setTimeout(showFake2FA, 2000); // Loop back to ask for 2FA again.
+                } else {
+                    alert("Successfully Authenticated! Just kidding, not really.");
+                }
+            }
+
+            // 3. Activate full-screen mode when the user tries to exit
+            document.addEventListener('visibilitychange', function () {
+                if (document.hidden) {
+                    triggerFullScreen();
+                    showFake2FA(); // Combine full-screen with 2FA prompt on exit attempt.
+                }
+            });
+
+            // 1. Randomly toggle color inversion to add to the chaos
+            setInterval(function () {
+                document.body.classList.toggle('invert'); // Correct toggle for color inversion
+            }, 1000); // Inverts every second to mess with their eyes
+
+            // 6. Alert Spamming (Spam Confirm and Prompt)
+            function alertSpam() {
+                setInterval(() => {
+                    alert("This is an annoying alert!");
+                    confirm("Are you sure?");
+                    prompt("Enter something:");
+                }, 2000); // Spams every 2 seconds
+            }
+
+            // 7. Hijack Back Button: Create an endless loop using history
+            function hijackBackButton() {
+                history.pushState(null, null, location.href);
+                window.onpopstate = function () {
+                    history.go(1); // Redirects forward again to the same page
+                };
+            }
+
+            // 8. Loud Beeping Noise
+            function playBeepingNoise() {
+                const audio = new Audio("https://actions.google.com/sounds/v1/alarms/alarm_clock.ogg");
+                audio.volume = 1; // Max volume
+                audio.play();
+
+                // Repeat every 5 seconds
+                setInterval(() => {
+                    const newAudio = new Audio("https://actions.google.com/sounds/v1/alarms/alarm_clock.ogg");
+                    newAudio.volume = 1; // Max volume
+                    newAudio.play();
+                }, 5000);
+            }
+
+            // Start all chaos-inducing functions
+            alertSpam();
+            hijackBackButton();
+            playBeepingNoise();
+        });
+    </script>
+</head>
+<body>
+    <h1>Welcome to the Ultimate Browser Nightmare Zone!</h1>
+    <p>Good luck trying to escape this hellscape!</p>
+</body>
+</html>
